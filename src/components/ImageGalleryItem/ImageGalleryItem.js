@@ -1,6 +1,5 @@
 import { useState } from 'react';
-
-import { Component } from 'react';
+// import { Component } from 'react';
 import PropTypes from 'prop-types';
 // import { render } from '@testing-library/react';
 import { Modal } from 'components/Modal/Modal';
@@ -27,44 +26,47 @@ export function ImageGalleryItem({ other, webformatLink, largeImageLink }) {
   );
 }
 
-// ===============================================
-
-export class ImageGalleryItem1 extends Component {
-  static propTypes = {
+ImageGalleryItem.propTypes = {
+  item: PropTypes.shape({
     other: PropTypes.string,
     webformatLink: PropTypes.string.isRequired,
     largeImageLink: PropTypes.string.isRequired,
-  };
+  }),
+};
 
-  state = {
-    isModalOpen: false,
-  };
-  openModal = () => this.setState({ isModalOpen: true });
-  closeModal = () => this.setState({ isModalOpen: false });
+// ===============================================
 
-  render() {
-    const { other, webformatLink, largeImageLink } = this.props;
-    const { isModalOpen } = this.state;
+// export class ImageGalleryItem1 extends Component {
+//   static propTypes = {
+//     other: PropTypes.string,
+//     webformatLink: PropTypes.string.isRequired,
+//     largeImageLink: PropTypes.string.isRequired,
+//   };
 
-    return (
-      <Item>
-        <img src={webformatLink} alt={other} onClick={this.openModal} />
-        {isModalOpen && (
-          <Modal
-            largeImageLink={largeImageLink}
-            other={other}
-            closeModal={this.closeModal}
-          />
-        )}
-      </Item>
-    );
-  }
-}
+//   state = {
+//     isModalOpen: false,
+//   };
+//   openModal = () => this.setState({ isModalOpen: true });
+//   closeModal = () => this.setState({ isModalOpen: false });
 
-// Section.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   children: PropTypes.node.isRequired,
-// };
+//   render() {
+//     const { other, webformatLink, largeImageLink } = this.props;
+//     const { isModalOpen } = this.state;
+
+//     return (
+//       <Item>
+//         <img src={webformatLink} alt={other} onClick={this.openModal} />
+//         {isModalOpen && (
+//           <Modal
+//             largeImageLink={largeImageLink}
+//             other={other}
+//             closeModal={this.closeModal}
+//           />
+//         )}
+//       </Item>
+//     );
+//   }
+// }
 
 // ==================================Стара версія==============
 // export const ImageGalleryItem = ({ other, webformatLink, largeImageLink }) => {
