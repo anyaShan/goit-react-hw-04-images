@@ -16,6 +16,7 @@ let schema = yup.object().shape({
 
 export const Searchbar = ({ onSubmit }) => {
   const handleFormSubmit = (values, { resetForm }) => {
+    console.log(values.searchName);
     // console.log(values);
     if (values.searchName.trim() === '') {
       return toast.error('Please enter something!');
