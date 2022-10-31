@@ -1,10 +1,35 @@
+import { useState } from 'react';
+
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 // import { render } from '@testing-library/react';
 import { Modal } from 'components/Modal/Modal';
 import { Item } from './ImageGalleryItem.styled';
 
-export class ImageGalleryItem extends Component {
+export function ImageGalleryItem({ other, webformatLink, largeImageLink }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  return (
+    <Item>
+      <img
+        src={webformatLink}
+        alt={other}
+        onClick={() => setIsModalOpen(true)}
+      />
+      {isModalOpen && (
+        <Modal
+          largeImageLink={largeImageLink}
+          other={other}
+          closeModal={() => setIsModalOpen(false)}
+        />
+      )}
+    </Item>
+  );
+}
+
+// ===============================================
+
+export class ImageGalleryItem1 extends Component {
   static propTypes = {
     other: PropTypes.string,
     webformatLink: PropTypes.string.isRequired,
