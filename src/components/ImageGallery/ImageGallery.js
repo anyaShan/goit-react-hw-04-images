@@ -47,13 +47,13 @@ export function ImageGallery({ searchName }) {
       });
   }, [searchName]);
 
-  const loadMore = searchName => {
+  const loadMore = () => {
     apiQuery(searchName, page)
       .then(respons => {
         const { data } = respons;
         const { hits } = data;
 
-        setGallery([...gallery, ...hits]);
+        setGallery(prevState => [...prevState, ...hits]);
         setPage(prevPage => prevPage + 1);
         setStatus('resolved');
       })
