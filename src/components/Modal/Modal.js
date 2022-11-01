@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Component } from 'react';
+// import { Component } from 'react';
 import { createPortal } from 'react-dom';
 
 import PropTypes from 'prop-types';
@@ -35,43 +35,51 @@ export function Modal({ other, largeImageLink, closeModal }) {
   );
 }
 
+Modal.propTypes = {
+  image: PropTypes.shape({
+    other: PropTypes.string,
+    closeModal: PropTypes.func.isRequired,
+    largeImageLink: PropTypes.string.isRequired,
+  }),
+};
+
 // =========================================
 
-export class Modal1 extends Component {
-  static propTypes = {
-    other: PropTypes.string,
-    largeImageLink: PropTypes.string.isRequired,
-  };
+// export class Modal extends Component {
+//   static propTypes = {
+//     other: PropTypes.string,
+//     largeImageLink: PropTypes.string.isRequired,
+//   };
 
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyDown);
-  }
+//   componentDidMount() {
+//     window.addEventListener('keydown', this.handleKeyDown);
+//   }
 
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyDown);
-  }
+//   componentWillUnmount() {
+//     window.removeEventListener('keydown', this.handleKeyDown);
+//   }
 
-  handleKeyDown = e => {
-    if (e.code === 'Escape') {
-      this.props.closeModal();
-    }
-  };
+//   handleKeyDown = e => {
+//     if (e.code === 'Escape') {
+//       this.props.closeModal();
+//     }
+//   };
 
-  handleBackdropClick = e => {
-    if (e.currentTarget === e.target) {
-      this.props.closeModal();
-    }
-  };
+//   handleBackdropClick = e => {
+//     if (e.currentTarget === e.target) {
+//       this.props.closeModal();
+//     }
+//   };
 
-  render() {
-    const { other, largeImageLink } = this.props;
-    return createPortal(
-      <Overlay onClick={this.handleBackdropClick}>
-        <ModalImage>
-          <img src={largeImageLink} alt={other} />
-        </ModalImage>
-      </Overlay>,
-      modalRoot
-    );
-  }
-}
+//   render() {
+//     const { other, largeImageLink } = this.props;
+//     return createPortal(
+//       <Overlay onClick={this.handleBackdropClick}>
+//         <ModalImage>
+//           <img src={largeImageLink} alt={other} />
+//         </ModalImage>
+//       </Overlay>,
+//       modalRoot
+//     );
+//   }
+// }
